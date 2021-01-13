@@ -1,0 +1,31 @@
+body {
+  background-color: black;
+}
+
+.container-fluid {
+  display: flex;
+}
+
+.stockOveriewText {
+  color: white;
+  font-weight: bold;
+}
+
+.card {
+  background-color: #ffd51c;
+  width: 30rem;
+}
+
+.minor {
+  width: 10rem;
+  padding: 10px;
+}
+
+.overviewHeader {
+  color: black;
+  font-weight: bold;
+}
+
+.card-title {
+  color: #fefefa;
+}
