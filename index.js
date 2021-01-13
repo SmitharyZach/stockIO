@@ -1,5 +1,5 @@
 function getStocks(value) {
-  let $container = $(".container-fluid");
+  let $container = $(".stockResults");
   $(".stockItems").remove();
   $.get(
     `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${value}&apikey=DCJ1QDASJFVH1S53`,
