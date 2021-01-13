@@ -15,8 +15,8 @@ function getStockInfo(symbol) {
       console.log(data);
       html = `
       <div class='card-body'>
-        <h3 class='card-title stockOveriewText'>${data["Symbol"]}</h3>
-        <h4 class='card-title stockOveriewText'>${data["Name"]}</h4>
+        <h3 class='card-title stockOveriewText'>${data["Name"]}</h3>
+        <h4 class='card-title stockOveriewText'>${data["Symbol"]}</h4>
         <div class='stockOveriewText'><span class='overviewHeader'>Stock Market:</span> ${data["Exchange"]}</div>
         <div class='stockOveriewText'><span class='overviewHeader'>Currency:</span> ${data["Currency"]}</div>
         <div class='stockOveriewText'><span class='overviewHeader'>Sector:</span> ${data["Sector"]}</div>
@@ -40,65 +40,39 @@ function getStockPrices(symbol) {
     function (data) {
       console.log(data["Global Quote"]);
       let global = data["Global Quote"];
-      opening = global["02. open"];
-      console.log(parseInt(opening).toFixed(2));
       html = `
-      <div col-3 >
-        <div class='card text-center  ml-4 minor'>
-          <div card-body>
-            <h3 class='card-title stockOveriewText'>Opening</h3> 
-            <h3 class>${parseInt(global["02. open"]).toFixed(2)}</h3>
+      <div class='col-12'>
+        <div class='card text-center titleCard'>
+          <div class="card-body align-middle">
+            <h1 class='card-title'> Daily Time Series</h1>
+            <h3 class='card-title'>${global["01. symbol"]}</h3>
           </div>
+        </div>
+      </div>
+      <div class=''>
+        <div class='card text-center minor'>
+            <h3 class='card-title stockOveriewText'>Opening</h3> 
+            <h3>${parseInt(global["02. open"]).toFixed(2)}</h3>
         </div>
       </div>  
-      <div col-3>
-        <div class='card text-center ml-4 minor'>
-          <div card-body>
+      <div class=''>
+        <div class='card text-center minor'>
             <h3 class='card-title stockOveriewText'>High</h3> 
             <h3>${parseInt(global["03. high"]).toFixed(2)}</h3>
-          </div>
         </div>
       </div>
-      <div col-3>
-        <div class='card text-center ml-4 minor'>
-          <div card-body>
+      <div class=''>
+        <div class='card text-center minor'>
             <h3 class='card-title stockOveriewText'>Low</h3> 
             <h3>${parseInt(global["04. low"]).toFixed(2)}</h3>
-          </div>
         </div>
       </div>
-      <div col-3>  
-        <div class='card text-center ml-4 minor'>
-          <div card-body>
+      <div class=''>  
+        <div class='card text-center minor'>
             <h3 class='card-title stockOveriewText'>Price</h3> 
             <h3>${parseInt(global["05. price"]).toFixed(2)}</h3>
-          </div>
         </div>  
       </div>
-     <!-- <div col-3>
-        <div class='card text-center ml-4 minor'>
-          <div card-body>
-            <h3 class='card-title stockOveriewText'>Volume</h3> 
-            <h3>${parseInt(global["06. volume"]).toFixed(2)}</h3>
-          </div>
-        </div>
-      </div>
-      <div col-3>
-        <div class='card text-center ml-4 minor'>
-          <div card-body>
-            <h3 class='card-title stockOveriewText'>Previous Close</h3> 
-            <h3>${parseInt(global["08. previous close"]).toFixed(2)}</h3>
-          </div>
-        </div>
-      </div>
-      <div col-3>  
-        <div class='card text-center ml-4 minor'>
-          <div card-body>
-            <h3 class='card-title stockOveriewText'>Percent Change</h3> 
-            <h3>${global["10. change percent"]}</h3>
-          </div>
-        </div>
-      </div>  --!>
       `;
       $container.append(html);
     }

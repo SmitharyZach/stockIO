@@ -11,14 +11,15 @@ body {
   font-weight: bold;
 }
 
-.card {
+.main-card {
   background-color: #ffd51c;
-  width: 30rem;
+  width: 40%;
 }
 
 .minor {
   width: 10rem;
   padding: 10px;
+  background-color: #ffd51c;
 }
 
 .overviewHeader {
@@ -28,4 +29,8 @@ body {
 
 .card-title {
   color: white;
+}
+
+.titleCard {
+  background-color: #ffd51c;
 }
