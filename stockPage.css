@@ -34,3 +34,9 @@ body {
 .titleCard {
   background-color: #ffd51c;
 }
+
+.chartBody {
+  width: 1000px;
+  height: 400px;
+  margin: auto;
+}

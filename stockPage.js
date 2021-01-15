@@ -79,8 +79,35 @@ function getStockPrices(symbol) {
   );
 }
 
+function createChart(ctx) {
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      datasets: [
+        {
+          data: [34, 44, 33, 44, 33],
+          label: "AMZN",
+          borderColor: "#ffd51c",
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Past 5 Days",
+        maintainAspectRatio: true,
+        responsive: true,
+      },
+    },
+  });
+}
+
 $(function () {
   let symbol = getUrlParam("symbol");
+  let ctx = $("#stockChart");
   getStockInfo(symbol);
   getStockPrices(symbol);
+  createChart(ctx);
 });
