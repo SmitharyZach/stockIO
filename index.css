@@ -40,3 +40,12 @@ h1 {
 .row.header.align-items-center {
   height: 400px;
 }
+
+.stockResults {
+  justify-content: center;
+  padding: 0px;
+}
+
+.center {
+  justify-content: center;
+}

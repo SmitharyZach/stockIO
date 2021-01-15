@@ -7,7 +7,7 @@ function getStocks(value) {
       data.bestMatches.forEach((element) => {
         let symbol = element["1. symbol"];
         $container.append(
-          `<div id=${symbol} class='stockItems'>${symbol}</div>`
+          `<div id=${symbol} class='list-group-item stockItems'>${symbol}</div>`
         );
       });
     }
