@@ -7,7 +7,7 @@ to invest or not.
 
 ## Website
 
-http://dc-stockio.s3-website.us-east-2.amazonaws.com/
+https://eager-pasteur-8e93f9.netlify.app/
 
 ## stockIO in action
 
