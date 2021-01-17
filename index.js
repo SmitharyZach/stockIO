@@ -7,11 +7,14 @@ function getStocks(value) {
       data.bestMatches.forEach((element) => {
         let symbol = element["1. symbol"];
         $container.append(
-          `<div id=${symbol} class='list-group-item stockItems'>${symbol}</div>`
+          `<li id=${symbol} class='list-group-item stockItems'>${symbol}</li>`
         );
       });
     }
   );
+  $(".stockItems").hover(function () {
+    $(this).addClass("active");
+  });
   $(document).on("click", ".stockItems", function (event) {
     let id = event.target.id;
     location.href = `stockPage.html?symbol=${id}`;

@@ -42,10 +42,9 @@ h1 {
 }
 
 .stockResults {
-  justify-content: center;
   padding: 0px;
 }
 
-.center {
-  justify-content: center;
+.stockItems:hover {
+  background-color: #ffd51c;
 }

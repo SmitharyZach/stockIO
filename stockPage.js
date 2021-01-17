@@ -79,14 +79,14 @@ function getStockPrices(symbol) {
   );
 }
 
-function createChart(ctx) {
+function createChart(ctx, graphData, labelData) {
   new Chart(ctx, {
     type: "line",
     data: {
-      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      labels: labelData,
       datasets: [
         {
-          data: [34, 44, 33, 44, 33],
+          data: graphData,
           label: "AMZN",
           borderColor: "#ffd51c",
           fill: false,
@@ -96,12 +96,54 @@ function createChart(ctx) {
     options: {
       title: {
         display: true,
-        text: "Past 5 Days",
+        text: "6 Month Single Moving Average",
         maintainAspectRatio: true,
         responsive: true,
+        fontSize: 20,
+        fontColor: "#FFFFFF",
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: "#FFF",
+            },
+          },
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontColor: "#FFF",
+            },
+          },
+        ],
+      },
+      legend: {
+        labels: {
+          fontColor: "#FFF",
+        },
       },
     },
   });
+}
+
+function getGraphData(ctx, symbol) {
+  $.get(
+    `https://www.alphavantage.co/query?function=SMA&symbol=${symbol}&interval=weekly&time_period=5&series_type=open&apikey=DCJ1QDASJFVH1S53`,
+    function (data) {
+      let smaData = data["Technical Analysis: SMA"];
+      let graphData = [];
+      let labelData = [];
+      let values = Object.keys(smaData);
+      for (let i = 0; i < 24; i++) {
+        labelData.push(values[i]);
+        graphData.push(smaData[values[i]]["SMA"]);
+      }
+      labelData.reverse();
+      graphData.reverse();
+      createChart(ctx, graphData, labelData);
+    }
+  );
 }
 
 $(function () {
@@ -109,5 +151,5 @@ $(function () {
   let ctx = $("#stockChart");
   getStockInfo(symbol);
   getStockPrices(symbol);
-  createChart(ctx);
+  getGraphData(ctx, symbol);
 });
