@@ -4,7 +4,14 @@ function getStocks(value) {
   $.get(
     `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${value}&apikey=DCJ1QDASJFVH1S53`,
     function (data) {
-      data.bestMatches.forEach((element) => {
+      console.log(data.bestMatches);
+      let bestMatches = data.bestMatches;
+      console.log(bestMatches);
+      let results = bestMatches.filter(
+        (stock) => stock["4. region"] === "United States"
+      );
+      console.log(results);
+      results.forEach((element) => {
         let symbol = element["1. symbol"];
         $container.append(
           `<li id=${symbol} class='list-group-item stockItems'>${symbol}</li>`

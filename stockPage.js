@@ -79,7 +79,7 @@ function getStockPrices(symbol) {
   );
 }
 
-function createChart(ctx, graphData, labelData) {
+function createChart(ctx, graphData, labelData, symbol) {
   new Chart(ctx, {
     type: "line",
     data: {
@@ -87,7 +87,7 @@ function createChart(ctx, graphData, labelData) {
       datasets: [
         {
           data: graphData,
-          label: "AMZN",
+          label: symbol,
           borderColor: "#ffd51c",
           fill: false,
         },
@@ -141,7 +141,7 @@ function getGraphData(ctx, symbol) {
       }
       labelData.reverse();
       graphData.reverse();
-      createChart(ctx, graphData, labelData);
+      createChart(ctx, graphData, labelData, symbol);
     }
   );
 }
